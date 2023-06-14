@@ -17,6 +17,7 @@ model User {
   updatedAt DateTime       @updatedAt
   account   Account?
   entries   JournalEntry[]
+  analysis  EntryAnalysis[]
 }
 
 model Account {
@@ -56,11 +57,16 @@ model EntryAnalysis {
   entryId String
   entry JournalEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
 
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   mood String @db.Text
   subject String @db.Text
   negative Boolean
   summary String @db.Text
   color String @db.Text @default("#0101fe")
+  sentimentScore Float
 
   @@unique([entryId])
+  @@index([userId])
 }
