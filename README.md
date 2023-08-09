@@ -1,34 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![Frontend Masters](https://static.frontendmasters.com/assets/brand/logos/full.png)][fem]
+
+This is a companion repo for the [Build an AI Powered Fullstack App with Next.js, v3][course] course on [Frontend Masters][fem]. This application is built from scratch throughout the course. The `main` branch contains a final version of the application similar to the one built in the course. The other branches in the repo are code checkpoints which can be used as a starting point for specific lessons.
 
 ## Getting Started
 
-First, run the development server:
+The [course][course] covers the full process of building and deploying the application. The steps below summarize a few of the key requirements.
+
+### Create a new Next.js Project
+
+We recommend using Node version `18.x.x` and Next.js version `13.4.5` for this course.
 
 ```bash
+npx create-next-app@13.4.5 mood
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install Clerk
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Clerk is the third-party authentication provider for the application
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm i @clerk/nextjs
+```
 
-## Learn More
+**Add Clerk secrets to .env.local**
 
-To learn more about Next.js, take a look at the following resources:
+```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_XXXXXXXX
+CLERK_SECRET_KEY=sk_test_XXXXXX
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/journal
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/new-user
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### PlanetScale Serverless SQL Database
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Create a [PlanetScale Database](https://planetscale.com/)
+2. Install [pscale CLI](https://github.com/planetscale/cli#installation)
+3. Use the CLI to connect to the DB: `pscale auth login`
+4. Create a `dev` database branch: `pscale branch create mood dev`
+5. Start the connection: `pscale connect mood dev --port 3309`
 
-## Deploy on Vercel
+### Prisma ORM
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Install Prisma Client: `npm i @prisma/client`
+2. Install Prisma as dev dependency: `npm i prisma --save-dev`
+3. Initialize Prisma: `npx prisma init`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### OpenAI API Account Setup
+
+1. Create an [openai.com](https://openai.com/) account
+2. Select the `API` App.
+3. Create an [API Key](https://platform.openai.com/account/api-keys)
+4. Copy/Paste the key into your into `.env.local` using the variable `OPENAI_API_KEY`
+
+
+[fem]: https://frontendmasters.com
+[course]: https://frontendmasters.com/courses/fullstack-app-next-v3/
