@@ -64,7 +64,7 @@ model EntryAnalysis {
   subject String @db.Text
   negative Boolean
   summary String @db.Text
-  color String @db.Text @default("#0101fe")
+  color String @default("#0101fe")
   sentimentScore Float
 
   @@unique([entryId])
