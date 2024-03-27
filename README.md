@@ -34,6 +34,9 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/journal
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/new-user
 ```
 
+> [!IMPORTANT]  
+> PlanetScale has removed their free tier offering. [More info](https://planetscale.com/docs/concepts/planetscale-plans). You can still complete the course with a paid PlanetScale plan. See below for alternatives.
+
 ### PlanetScale Serverless SQL Database
 
 1. Create a [PlanetScale Database](https://planetscale.com/)
@@ -41,6 +44,12 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/new-user
 3. Use the CLI to connect to the DB: `pscale auth login`
 4. Create a `dev` database branch: `pscale branch create mood dev`
 5. Start the connection: `pscale connect mood dev --port 3309`
+
+### PlanetScale Alternatives
+
+There are several serverless database alternatives to PlanetScale include [Neon](https://neon.tech/docs/guides/prisma), [Turso](https://docs.turso.tech/sdk/ts/orm/prisma), [Supabase](https://supabase.com/partners/integrations/prisma), and [CockroachDB](https://www.cockroachlabs.com/docs/v23.2/build-a-nodejs-app-with-cockroachdb-prisma). 
+
+Neon has a branching feature similar to PlanetScale that will be in closer alignment to this course. Follow the [Prima + Neon setup guide](https://neon.tech/docs/guides/prisma).
 
 ### Prisma ORM
 
