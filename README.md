@@ -6,13 +6,17 @@ This is a companion repo for the [Build an AI Powered Fullstack App with Next.js
 
 The [course][course] covers the full process of building and deploying the application. The steps below summarize a few of the key requirements.
 
-### Create a new Next.js Project
+### Creating the Initial Project
 
-We recommend using Node version `18.x.x` and Next.js version `13.4.5` for this course.
+> [!IMPORTANT]  
+> Some dependencies used later in the course have peer dependency issues can can no longer be installed through the CLI. We recommend using the `start` branch to ensure you have the correct versions of all dependencies
 
 ```bash
-npx create-next-app@13.4.5 mood
-npm run dev
+git clone https://github.com/Hendrixer/fullstack-ai-nextjs.git
+cd fullstack-ai-nextjs
+git checkout start
+npm install --legacy-peer-deps
+npm run dev # tests your installation an opens the basic app at http://localhost:3000
 ```
 
 ### Install Clerk
@@ -47,7 +51,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/new-user
 
 ### PlanetScale Alternatives
 
-There are several serverless database alternatives to PlanetScale include [Neon](https://neon.tech/docs/guides/prisma), [Turso](https://docs.turso.tech/sdk/ts/orm/prisma), [Supabase](https://supabase.com/partners/integrations/prisma), and [CockroachDB](https://www.cockroachlabs.com/docs/v23.2/build-a-nodejs-app-with-cockroachdb-prisma). 
+There are several serverless database alternatives to PlanetScale include [Neon](https://neon.tech/docs/guides/prisma), [Turso](https://docs.turso.tech/sdk/ts/orm/prisma), [Supabase](https://supabase.com/partners/integrations/prisma), and [CockroachDB](https://www.cockroachlabs.com/docs/v23.2/build-a-nodejs-app-with-cockroachdb-prisma).
 
 Neon has a branching feature similar to PlanetScale that will be in closer alignment to this course. Follow the [Prima + Neon setup guide](https://neon.tech/docs/guides/prisma).
 
@@ -63,7 +67,6 @@ Neon has a branching feature similar to PlanetScale that will be in closer align
 2. Select the `API` App.
 3. Create an [API Key](https://platform.openai.com/account/api-keys)
 4. Copy/Paste the key into your into `.env.local` using the variable `OPENAI_API_KEY`
-
 
 [fem]: https://frontendmasters.com
 [course]: https://frontendmasters.com/courses/fullstack-app-next-v3/
